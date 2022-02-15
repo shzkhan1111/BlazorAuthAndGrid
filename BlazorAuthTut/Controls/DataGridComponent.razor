@@ -17,7 +17,17 @@
 
                 @foreach (var col in Columns)
                 {
-                    <th>@col.Caption</th>
+                    @if (col.alignment != Alignment.NotSet)
+                    {
+                        <th>@col.Caption</th>
+                    }
+                    else
+                    {
+
+                        <th>@col.Caption</th>
+
+                    }
+                    @*<th>@col.Caption</th>*@
                 }
             }
         </tr>
@@ -25,31 +35,31 @@
     <tbody>
         @foreach (var item in DataItems)//employee list
         {
-        <tr>
-            @foreach (var column in Columns)//column defination
-            {
-
-
-                @if (column.alignment != Alignment.NotSet)
+            <tr>
+                @foreach (var column in Columns)//column defination
                 {
-                    <td align="@column.alignment.ToString().ToLower()">
-                        @typeof(TItem).GetProperty(column.DataFeild).GetValue(item)
-                        ::
-                        <small>@item</small>
-                    </td>
-                }
-                else
-                {
-                    <td>
-                        @typeof(TItem).GetProperty(column.DataFeild).GetValue(item)
-                        ::
-                        <small>@item</small>
-                    </td>
-                }
 
 
-            }
-        </tr>
+                    @if (column.alignment != Alignment.NotSet)
+                    {
+                        <td align="@column.alignment.ToString().ToLower()">
+                            @typeof(TItem).GetProperty(column.DataFeild).GetValue(item)
+                            ::
+                            <small>@item</small>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            @typeof(TItem).GetProperty(column.DataFeild).GetValue(item)
+                            ::
+                            <small>@item</small>
+                        </td>
+                    }
+
+
+                }
+            </tr>
         }
     </tbody>
 </table>

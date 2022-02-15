@@ -1,10 +1,9 @@
 ﻿@page "/GridView"
 <h3>DataGridViewComponent</h3>
 
-<DataGridComponent 
-                        Columns="columnDefinations"
-                       DataItems="ListEmployees"
-                       TItem="Employee"></DataGridComponent>
+<DataGridComponent Columns="columnDefinations"
+                   DataItems="ListEmployees"
+                   TItem="Employee"></DataGridComponent>
 @code {
     private List<Employee> ListEmployees;
     public List<ColumnDefination> columnDefinations { get; set; }
@@ -24,12 +23,12 @@
                 new ColumnDefination[]
                 {
                     new ColumnDefination{DataFeild = "Name" , Caption="Name"},
-new ColumnDefination{DataFeild = "Title" , Caption="Title"},
-new ColumnDefination{DataFeild = "Department" , Caption="Department"},
-new ColumnDefination{DataFeild = "EmploymentDate" , Caption="Employment Date" , dataType=DataType.Date},
-new ColumnDefination{DataFeild = "Salary" , Caption="Salary" , dataType=DataType.Number}
+                    new ColumnDefination{DataFeild = "Title" , Caption="Title"},
+                    new ColumnDefination{DataFeild = "Department" , Caption="Department"},
+                    new ColumnDefination{DataFeild = "EmployeeDate" , Caption="Employment Date" , dataType=DataType.Date},
+                    new ColumnDefination{DataFeild = "Salary" , Caption="Salary" , dataType=DataType.Number}
 
-                                                                                        }
+                }
                 );
         }
         if (ListEmployees == null)
@@ -73,7 +72,7 @@ new ColumnDefination{DataFeild = "Salary" , Caption="Salary" , dataType=DataType
                             Salary= 100
 
                         }
-                    }
+                                    }
                 );
         }
     }

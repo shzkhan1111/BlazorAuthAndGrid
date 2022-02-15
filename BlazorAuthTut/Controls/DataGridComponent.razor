@@ -13,8 +13,7 @@
             }
             else
             {
-                //create the header based on Col def
-
+                //create the header based on Col 
 
                 @foreach (var col in Columns)
                 {
@@ -23,6 +22,22 @@
             }
         </tr>
     </thead>
+    <tbody>
+        @foreach (var item in DataItems)//employee list
+        {
+            <tr>
+                @foreach (var column in Columns)//column defination
+                {
+                <td>
+                    @typeof(TItem).GetProperty(column.DataFeild).GetValue(item)
+                                    ::
+                                    <small>@item</small>
+                                </td>
+                    
+                }
+            </tr>
+        }
+    </tbody>
 </table>
 
 @code {

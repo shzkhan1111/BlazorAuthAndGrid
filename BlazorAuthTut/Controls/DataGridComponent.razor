@@ -1,0 +1,40 @@
+﻿@*Data passig in
+    of generic type
+*@
+
+@typeparam TItem
+
+<table class="table is-fullwidth">
+    <thead>
+        <tr>
+            @if (Columns == null || Columns.Count <= 0)
+            {
+                //Create the Header with reflection
+            }
+            else
+            {
+                //create the header based on Col def
+
+
+                @foreach (var col in Columns)
+                {
+                    <th>@col.Caption</th>
+                }
+            }
+        </tr>
+    </thead>
+</table>
+
+@code {
+    //generic type to have a list of Items
+    [Parameter]
+    public List<TItem> DataItems { get; set; }
+
+    //define configuration Indicate what kind of Datafeild in T item
+    //Create a configuration Folder
+
+    //list of cols as params
+    // in import add using BlazorAuthTut.Configuration
+    [Parameter]
+    public List<ColumnDefination> Columns { get; set; }
+}

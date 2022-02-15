@@ -13,7 +13,7 @@
             }
             else
             {
-                //create the header based on Col 
+                //create the header based on Col
 
                 @foreach (var col in Columns)
                 {
@@ -25,17 +25,31 @@
     <tbody>
         @foreach (var item in DataItems)//employee list
         {
-            <tr>
-                @foreach (var column in Columns)//column defination
+        <tr>
+            @foreach (var column in Columns)//column defination
+            {
+
+
+                @if (column.alignment != Alignment.NotSet)
                 {
-                <td>
-                    @typeof(TItem).GetProperty(column.DataFeild).GetValue(item)
-                                    ::
-                                    <small>@item</small>
-                                </td>
-                    
+                    <td align="@column.alignment.ToString().ToLower()">
+                        @typeof(TItem).GetProperty(column.DataFeild).GetValue(item)
+                        ::
+                        <small>@item</small>
+                    </td>
                 }
-            </tr>
+                else
+                {
+                    <td>
+                        @typeof(TItem).GetProperty(column.DataFeild).GetValue(item)
+                        ::
+                        <small>@item</small>
+                    </td>
+                }
+
+
+            }
+        </tr>
         }
     </tbody>
 </table>
